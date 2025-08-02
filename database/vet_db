@@ -1,0 +1,21 @@
+CREATE DATABASE vet_db;
+USE vet_db;
+
+CREATE TABLE animals (
+    animal_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    species VARCHAR(50),
+    age INT
+);
+
+CREATE TABLE owners (
+    owner_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    contact VARCHAR(100),
+    animal_id INT NULL,
+    CONSTRAINT fk_animal
+        FOREIGN KEY (animal_id) REFERENCES animals(animal_id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
+);
+SELECT * FROM vet_db.animals LIMIT 1000;
